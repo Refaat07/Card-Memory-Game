@@ -55,11 +55,26 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center;
 }
 
-.container {
+/* .container {
     width: 55%;
     height: 50vh;
     margin-inline: auto;
     background-color: #FFF;
     border-radius: 15px;
-} 
+} */
 
+#matrix {
+    height: 532px;
+    width: 532px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 5px; 
+    background-color: whitesmoke;
+    border: 5px solid lightgrey;
+}
+
+.card {
+    height: 128px;
+    width: 128px; 
+    border-radius: 10px; 
+}
