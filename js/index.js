@@ -5,6 +5,14 @@ const rows = 4;
 const columns = 4;
 let matrix =[];
 
+let selectedCards = [];
+let isClickable = true;
+
+window.onload = function() {
+    shuffle();
+    initializeMatrix();
+    setTimeout(addCardEventListeners,2000);
+}
 
 function shuffle() {
     fruitsCards = fruits.concat(fruits);
@@ -45,7 +53,42 @@ function hideCards() {
     }
 }
 
-window.onload = function() {
-    shuffle();
-    initializeMatrix();
+function selectCard() {
+    if (!isClickable) {
+        return;
+    }
+  
+    let card = this;
+    let [row, col] = card.id.split('-');
+    let cardValue = matrix[row][col];
+  
+    // Check if the card is already selected or matched (add matched class when comparing cards)
+    if (card.classList.contains('matched')) {
+        return;
+    }
+    
+    if (selectedCards.some(selectedCard => selectedCard.card.id === card.id)) {
+        return;
+    }
+  
+    // reveal the selected card
+    card.src = "./images/" + cardValue + ".png";
+    console.log(card);
+    selectedCards.push({ card, value: cardValue });
+    console.log(selectedCards);
+  
+    // Check if two cards are selected
+    if (selectedCards.length === 2) {
+        isClickable = false; // Disable clicking during comparison
+
+        //setTimeout(compareCards, 500); --> still to do compare function
+    }
+  }
+
+function addCardEventListeners() {
+    let cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+        card.addEventListener('click', selectCard);
+    });
 }
+
