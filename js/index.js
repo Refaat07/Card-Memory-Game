@@ -8,18 +8,25 @@ let matrix =[];
 let selectedCards = [];
 let isClickable = true;
 
+<<<<<<< HEAD
 let trials;
 
 let NumOfMatches = 0;
 
 window.onload = function() {
     trials = 0;
+=======
+window.onload = function() {
+>>>>>>> fc4fae45af7dda03a9cc5855d4dd2813e0ebeb36
     shuffle();
     initializeMatrix();
     setTimeout(addCardEventListeners,2000);
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> fc4fae45af7dda03a9cc5855d4dd2813e0ebeb36
 function shuffle() {
     fruitsCards = fruits.concat(fruits);
     // console.log(fruitsCards);
@@ -87,7 +94,11 @@ function selectCard() {
     if (selectedCards.length === 2) {
         isClickable = false; // Disable clicking during comparison
 
+<<<<<<< HEAD
         setTimeout(compareCards, 500); 
+=======
+        //setTimeout(compareCards, 500); --> still to do compare function
+>>>>>>> fc4fae45af7dda03a9cc5855d4dd2813e0ebeb36
     }
   }
 
@@ -98,6 +109,7 @@ function addCardEventListeners() {
     });
 }
 
+<<<<<<< HEAD
 function compareCards() {
     let [card1, card2] = selectedCards;
     trials++;
@@ -128,3 +140,5 @@ function compareCards() {
     selectedCards = [];
     isClickable = true; // Enable clicking for the next turn
 }
+=======
+>>>>>>> fc4fae45af7dda03a9cc5855d4dd2813e0ebeb36

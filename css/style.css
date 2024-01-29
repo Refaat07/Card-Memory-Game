@@ -62,6 +62,7 @@ h1, h2, h3, h4, h5, h6 {
     background-color: #FFF;
     border-radius: 15px;
 } */
+<<<<<<< HEAD
 
 #matrix {
     height: 532px;
@@ -112,3 +113,28 @@ h1, h2, h3, h4, h5, h6 {
     transform: translateX(5px);
     }
 }
+=======
+
+#matrix {
+    height: 532px;
+    width: 532px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 5px; 
+    background-color: whitesmoke;
+    border: 5px solid lightgrey;
+}
+
+.card {
+    height: 128px;
+    width: 128px; 
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    transition: transform 0.2s ease-in-out; 
+
+}
+
+.card:hover {
+    transform: scale(1.05); 
+}
+>>>>>>> fc4fae45af7dda03a9cc5855d4dd2813e0ebeb36
