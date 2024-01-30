@@ -12,6 +12,7 @@ let stillPlaying = false;
 let trials;
 
 let NumOfMatches = 0;
+let scoreValue;
 
 let timerInfo = document.getElementById('timer-info');
 let maxTime = 30;
@@ -20,11 +21,13 @@ let timer;
 
 // Score Variables
 let flipInfo = document.getElementById('flips-info');
+const scoreInfo = document.getElementById('score-info');
 
 
 
 window.onload = function() {
     trials = 0;
+    scoreValue=0;
     shuffle();
     initializeMatrix();
     addCardEventListeners()
@@ -133,21 +136,23 @@ function compareCards() {
     if (card1.value === card2.value) {
         // Matched cards
         card1.card.classList.add('matched');
-        card2.card.classList.add('matched');
+        card2.card.classList.add('matched');    
         NumOfMatches++;
-        console.log(NumOfMatches);
+        // console.log(NumOfMatches);
+        updateScore(100); 
         if(NumOfMatches == 8){
             console.log("Congrats!!");
-            clearInterval(timer);
-            
+            clearInterval(timer); // Stop the timer
         }
-        
+              
     } else {
         // Not matched, hide cards again
         card1.card.src = card2.card.src = "./images/question mark.png";
         card1.card.classList.add("shake");
         // card2.card.src = "./images/question mark.png";
         card2.card.classList.add("shake");
+        updateScore(-50);        
+
     }
     setTimeout(() => {
         card1.card.classList.remove("shake");
@@ -159,3 +164,11 @@ function compareCards() {
     isClickable = true; // Enable clicking for the next turn
 }
 
+function updateScore(points) {
+    scoreValue += points;
+    if (scoreValue < 0)
+    {
+        scoreValue = 0;
+    }
+    scoreInfo.innerText = scoreValue;
+}
