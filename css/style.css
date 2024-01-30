@@ -2,13 +2,25 @@
 /* Bungee Spice */
 @import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap');
 
+/* Bungee */
+@import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
+
 /* Poppins */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* Honk */
+@import url('https://fonts.googleapis.com/css2?family=Honk&display=swap');
+
+/* Londrina Outline */
+@import url('https://fonts.googleapis.com/css2?family=Londrina+Outline&display=swap');
+
 
 /* Main Framework */
 :root {
     --main-font: 'Poppins', sans-serif;
+    --funny-font-II: 'Bungee', sans-serif;
     --funny-font: 'Bungee Spice', sans-serif;
+    --second-funny-font : "Honk", system-ui;
     --contianer-background : #EDEDED;
     --background-color: #37373f;
     --font-default-color: #212529;
@@ -53,42 +65,71 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
-/* .container {
-    width: 55%;
-    height: 50vh;
+.game-name {
+    font-size: 52px;
+    margin-bottom: 20px;
+    font-family: var(--funny-font);
+    font-family: "Londrina Outline", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 5em;
+    background: linear-gradient(to bottom, #1B6DFD 30%,#9238FD 70%);
+    background-clip: inherit;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+
+.container {
+    width: 500px;
+    height: 600px;
     margin-inline: auto;
     background-color: #FFF;
     border-radius: 15px;
-} */
+}
+
 
 #matrix {
-    height: 532px;
-    width: 532px;
+    padding: 25px;
+    height: 500px;
+    width: 500px;
     display: grid;
     grid-template-columns: repeat(4, 1fr); 
     gap: 5px; 
     background-color: whitesmoke;
-    border: 5px solid lightgrey;
+    border-radius: 10px;
 }
 
 .card {
-    height: 128px;
-    width: 128px; 
+    height: 90px;
+    width: 90px; 
     border-radius: 10px; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-    transition: transform 0.2s ease-in-out; 
-
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.17); 
+    /* transition: transform 0.2s ease-in-out;  */
 }
 
-.card:hover {
-    transform: scale(1.05); 
-}
-
-.card.matched {
+.matched {
+    animation: pulse 1.5s;
     opacity: 0.7; 
-    filter: grayscale(50%); 
+    /* filter: grayscale(10%); */
+    background-color: #34B433;
+}
+
+@keyframes pulse {
+    0% {
+    transform: scale(0.9);
+    box-shadow: 0 4px 8px rgba(51, 180, 51, 0.8);
+    }
+    50% {
+        transform: scale(1);
+        box-shadow: 0 3px 6px rgba(51, 180, 51, 0.6);
+    }
+    100% {
+    transform: scale(1.02);
+    box-shadow: 0 2px 4px rgba(51, 180, 51, 0.4);
+    }
 }
 
 .card.shake{
@@ -112,3 +153,45 @@ h1, h2, h3, h4, h5, h6 {
     transform: translateX(5px);
     }
 }
+
+.game-details {
+    padding: 5px;
+    margin-inline: auto;
+}
+
+.game-details div {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.game-details > span {
+    text-align: center;
+    font-size: larger;
+}
+
+
+.game-details .timer,
+.game-details .flips,
+.game-details .score {
+    font-family: var(--funny-font-II);
+}
+
+.game-details .score {
+    display: block;
+}
+
+
+.game-details #flips-info, 
+.game-details #timer-info,
+.game-details #score-info {
+    font-family: var(--main-font);
+    font-weight: bolder;
+    font-size: larger;
+    margin-left: 5px;
+}
+
+.game-details #score-info {
+    color: #34B433;
+}
+
