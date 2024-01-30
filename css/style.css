@@ -195,3 +195,38 @@ h1, h2, h3, h4, h5, h6 {
     color: #34B433;
 }
 
+/* Results PopUp */
+.hidden {
+    display: none;
+}
+
+
+.results-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    width: 40%;
+    background-color: #EDEDED;
+    padding: 5rem;
+    border-radius: 10px;
+    box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+    z-index: 10;
+    text-align: center;
+}
+
+.results-message img {
+    margin-inline: auto;
+}
+
+.game-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(2px);
+    z-index: 9;
+}

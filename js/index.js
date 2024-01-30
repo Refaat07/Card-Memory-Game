@@ -23,9 +23,17 @@ let timer;
 let flipInfo = document.getElementById('flips-info');
 const scoreInfo = document.getElementById('score-info');
 
-
+const scoreMessage = document.querySelector('.results-message');
+const gameOverlay = document.querySelector('.game-overlay'); 
+const messageElement = document.querySelector('.message');
+let scoreResult = document.querySelector('.score-result');
 
 window.onload = function() {
+    // Popup message
+    scoreMessage.classList.add('hidden');
+    gameOverlay.classList.add('hidden');
+    messageElement.textContent = "";
+    scoreResult.textContent = "";
     trials = 0;
     scoreValue=0;
     shuffle();
@@ -48,8 +56,10 @@ function shuffle() {
 
 function initiateTime() {
     if(timeLeft <= 0) {
+        showResults();
         return clearInterval(timer);
     }
+   
     timeLeft--;
     timerInfo.innerText = timeLeft;
 }
@@ -117,8 +127,9 @@ function selectCard() {
             setTimeout(compareCards, 500);
         }
     }
-  
+
 }
+
 
 function addCardEventListeners() {
     let cards = document.querySelectorAll('.card');
@@ -141,7 +152,8 @@ function compareCards() {
         // console.log(NumOfMatches);
         updateScore(100); 
         if(NumOfMatches == 8){
-            console.log("Congrats!!");
+            showResults();
+            // console.log("Congrats!!");
             clearInterval(timer); // Stop the timer
         }
               
@@ -171,4 +183,21 @@ function updateScore(points) {
         scoreValue = 0;
     }
     scoreInfo.innerText = scoreValue;
+}
+
+function showResults(){
+    scoreMessage.classList.remove('hidden');
+    gameOverlay.classList.remove('hidden');
+
+    if(NumOfMatches == 8){
+        document.querySelector('.results-message img').src = "./images/celebrate.png";
+        messageElement.textContent = "Congrats!!";
+    }
+    else{
+        console.log("You've lost --> Time out (IN SHOW RESULT DUNCTION) ");
+        document.querySelector('.results-message img').src = "./images/error.png";
+        messageElement.textContent = "Time Out!!";
+    }    
+    scoreResult.textContent = `Your Score : ${scoreValue}`;
+
 }
