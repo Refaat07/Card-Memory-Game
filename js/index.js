@@ -1,47 +1,29 @@
 let fruits =["apple","avocado","banana","blueberry","coconut","grape","orange","watermelon"]
 let fruitsCards;
-
 const rows = 4;
 const columns = 4;
 let matrix =[];
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
 let selectedCards = [];
 let isClickable = true;
 let stillPlaying = false;
 
-let trials;
-
-let NumOfMatches = 0;
-let scoreValue;
-
+//===================== Time variables ======================
 let timerInfo = document.getElementById('timer-info');
-let maxTime = 30;
-let timeLeft = maxTime;
-let timer;
+let maxTime, timeLeft, timer;
 
 // Score Variables
-let flipInfo = document.getElementById('flips-info');
+const flipInfo = document.getElementById('flips-info');
 const scoreInfo = document.getElementById('score-info');
-
 const scoreMessage = document.querySelector('.results-message');
-const gameOverlay = document.querySelector('.game-overlay'); 
+const gameOverlay = document.querySelector('.game-overlay');
 const messageElement = document.querySelector('.message');
-let scoreResult = document.querySelector('.score-result');
+const scoreResult = document.querySelector('.score-result');
 
-window.onload = function() {
-    // Popup message
-    scoreMessage.classList.add('hidden');
-    gameOverlay.classList.add('hidden');
-    messageElement.textContent = "";
-    scoreResult.textContent = "";
-    trials = 0;
-    scoreValue=0;
-    shuffle();
-    initializeMatrix();
-    addCardEventListeners()
-    // setTimeout(addCardEventListeners,2000);
-    // initiateTime();
-}
+
+let NumOfMatches ,scoreValue, trials;
+
+window.onload = refreshGame;
 
 function shuffle() {
     fruitsCards = fruits.concat(fruits);
@@ -49,9 +31,8 @@ function shuffle() {
     for (let i = fruitsCards.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [fruitsCards[i], fruitsCards[j]] = [fruitsCards[j], fruitsCards[i]];
-      }
+    }
     //   console.log(fruitsCards);
-
 }
 
 function initiateTime() {
@@ -59,7 +40,6 @@ function initiateTime() {
         showResults();
         return clearInterval(timer);
     }
-   
     timeLeft--;
     timerInfo.innerText = timeLeft;
 }
@@ -76,6 +56,10 @@ function initializeMatrix () {
             card.id = row.toString() + "-" + col.toString();
             card.src = "./images/" + cardImg + ".png";
             card.classList.add("card");
+
+            // card.addEventListener("click", () => selectCard(row, col));
+
+
             document.getElementById("matrix").append(card);
         }
         matrix.push(insertionRow);
@@ -91,6 +75,7 @@ function hideCards() {
         }
     }
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function selectCard() {
     if(!stillPlaying){
@@ -130,15 +115,6 @@ function selectCard() {
 
 }
 
-
-function addCardEventListeners() {
-    let cards = document.querySelectorAll('.card');
-    cards.forEach(card => {
-        card.addEventListener('click', selectCard);
-    });
-}
-
-
 function compareCards() {
     let [card1, card2] = selectedCards;
     trials++;
@@ -176,6 +152,8 @@ function compareCards() {
     isClickable = true; // Enable clicking for the next turn
 }
 
+// updating the score///////////////////////////////////////////////
+
 function updateScore(points) {
     scoreValue += points;
     if (scoreValue < 0)
@@ -183,6 +161,14 @@ function updateScore(points) {
         scoreValue = 0;
     }
     scoreInfo.innerText = scoreValue;
+}
+
+// Add event listeners to the cards
+function addCardEventListeners() {
+    let cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+        card.addEventListener('click', selectCard);
+    });
 }
 
 function showResults(){
@@ -194,10 +180,43 @@ function showResults(){
         messageElement.textContent = "Congrats!!";
     }
     else{
-        console.log("You've lost --> Time out (IN SHOW RESULT DUNCTION) ");
         document.querySelector('.results-message img').src = "./images/error.png";
         messageElement.textContent = "Time Out!!";
     }    
     scoreResult.textContent = `Your Score : ${scoreValue}`;
 
 }
+
+function refreshGame() {
+    // Reset variables and state
+    stillPlaying = false;
+    clearInterval(timer);
+    maxTime = 30;
+    timeLeft = maxTime;
+    NumOfMatches = 0;
+    scoreValue = 0;
+    trials = 0;
+    selectedCards = [];
+    isClickable = true;
+
+    // Clear the matrix
+    document.getElementById("matrix").innerHTML = "";
+    matrix = [];
+
+    // Popup message
+    scoreMessage.classList.add('hidden');
+    gameOverlay.classList.add('hidden');
+    messageElement.textContent = "";
+    scoreResult.textContent = "";
+
+    // Shuffle and re-initialize the matrix
+    shuffle();
+    initializeMatrix();
+    addCardEventListeners();
+
+    // Update displays
+    timerInfo.innerText = timeLeft;
+    flipInfo.innerText = trials;
+    scoreInfo.innerText = scoreValue;
+}
+

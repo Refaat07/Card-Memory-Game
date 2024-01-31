@@ -230,3 +230,15 @@ h1, h2, h3, h4, h5, h6 {
     backdrop-filter: blur(2px);
     z-index: 9;
 }
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: #9138fdc7;
+    color: #EDEDED;
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-top: 20px;
+    cursor: pointer;
+}
