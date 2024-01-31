@@ -126,7 +126,7 @@ function compareCards() {
         card2.card.classList.add('matched');    
         NumOfMatches++;
         // console.log(NumOfMatches);
-        updateScore(100); 
+        updateScore(true); 
         if(NumOfMatches == 8){
             showResults();
             // console.log("Congrats!!");
@@ -139,7 +139,7 @@ function compareCards() {
         card1.card.classList.add("shake");
         // card2.card.src = "./images/question mark.png";
         card2.card.classList.add("shake");
-        updateScore(-50);        
+        updateScore(false);        
 
     }
     setTimeout(() => {
@@ -154,8 +154,37 @@ function compareCards() {
 
 // updating the score///////////////////////////////////////////////
 
-function updateScore(points) {
-    scoreValue += points;
+function updateScore(isMatched) {
+    if (isMatched){
+    if (timeLeft <=45 && timeLeft >=30 )
+    {
+        scoreValue +=100;
+    }
+    else if (timeLeft <30 && timeLeft >=15 )
+    {
+        scoreValue +=50;
+    }
+    else
+    {
+        scoreValue +=25; 
+    }
+    }
+    else
+    {
+        if (timeLeft <=45 && timeLeft >=30 )
+        {
+            scoreValue -=10;
+        }
+        else if (timeLeft <30 && timeLeft >=15 )
+        {
+            scoreValue -=15;
+        }
+        else
+        {
+            scoreValue -=20; 
+        }
+    }
+    
     if (scoreValue < 0)
     {
         scoreValue = 0;
@@ -191,7 +220,7 @@ function refreshGame() {
     // Reset variables and state
     stillPlaying = false;
     clearInterval(timer);
-    maxTime = 30;
+    maxTime = 45;
     timeLeft = maxTime;
     NumOfMatches = 0;
     scoreValue = 0;
