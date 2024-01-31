@@ -25,6 +25,7 @@ let NumOfMatches ,scoreValue, trials;
 
 window.onload = refreshGame;
 
+
 function shuffle() {
     fruitsCards = fruits.concat(fruits);
     // console.log(fruitsCards);
@@ -205,6 +206,7 @@ function showResults(){
     gameOverlay.classList.remove('hidden');
 
     if(NumOfMatches == 8){
+        saveHighestScore();
         document.querySelector('.results-message img').src = "./images/celebrate.png";
         messageElement.textContent = "Congrats!!";
     }
@@ -212,11 +214,14 @@ function showResults(){
         document.querySelector('.results-message img').src = "./images/error.png";
         messageElement.textContent = "Time Out!!";
     }    
+    saveLatestScore();
     scoreResult.textContent = `Your Score : ${scoreValue}`;
 
 }
 
 function refreshGame() {
+    document.getElementById('latest-score-info').textContent = localStorage.getItem('latestScore') || '0';
+    document.getElementById('highest-score-info').textContent = localStorage.getItem('highestScore') || '0';
     // Reset variables and state
     stillPlaying = false;
     clearInterval(timer);
@@ -247,5 +252,24 @@ function refreshGame() {
     timerInfo.innerText = timeLeft;
     flipInfo.innerText = trials;
     scoreInfo.innerText = scoreValue;
+}
+
+function saveLatestScore() {
+    // retrieve the latest score from localStorage or default to 0
+    const latestScore = parseInt(localStorage.getItem('latestScore')) || 0;
+
+    localStorage.setItem('latestScore', scoreValue);
+
+    document.getElementById('latest-score-info').textContent = scoreValue;
+}
+
+
+function saveHighestScore() {
+    // retrieve the highest score from localStorage or default to 0
+    const highestScore = parseInt(localStorage.getItem('highestScore')) || 0;
+
+    localStorage.setItem('highestScore', Math.max(highestScore, scoreValue));
+
+    document.getElementById('highest-score-info').textContent = localStorage.getItem('highestScore');
 }
 

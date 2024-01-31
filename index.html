@@ -7,7 +7,6 @@
     <title>Memory Card Game</title>
 </head>
 <body>
-
     <div class="game-section">
         <h1 class="game-name">Fruits Match</h1>
         <div class="container">
@@ -17,7 +16,7 @@
             <div class="game-details">
                 <div>
                     <span id="timer" class="timer">Time: 
-                        <span id="timer-info">30</span> s
+                        <span id="timer-info">45</span> s
                     </span>
     
                     <span id="flips" class="flips">Flips: 
@@ -33,8 +32,9 @@
         
         
         <div class="results-message hidden">
-    
+       
             <img class="resultIcon" src="" alt="result-image">
+
             <h1 class="message"></h1>
             <h3 class="score-result"></h3>
 
@@ -42,6 +42,19 @@
         </div>
         <div class="game-overlay hidden"></div>
     </div>
+
+    
+    <div class="scores">
+        <span id="latest-score" class="latest-score">Latest Score: 
+            <span id="latest-score-info"> </span> 
+        </span>
+        <br>
+        <span id="highest-score" class="highest-score">Highest Score: 
+            <span id="highest-score-info"> </span>
+        </span>
+    </div>
+</div>
+
 
     <script src="./js/index.js"></script>
 </body>

@@ -15,6 +15,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Londrina+Outline&display=swap');
 
 
+
+
 /* Main Framework */
 :root {
     --main-font: 'Poppins', sans-serif;
@@ -195,6 +197,8 @@ h1, h2, h3, h4, h5, h6 {
     color: #34B433;
 }
 
+
+
 /* Results PopUp */
 .hidden {
     display: none;
@@ -241,4 +245,26 @@ button {
     font-weight: 500;
     margin-top: 20px;
     cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+    background-color: #9238FD;
+    transform: scale(1.05);
+}
+
+.scores {
+    position: absolute;
+    background-color: #FFF;
+    padding: 30px;
+
+    top: 50%;
+    left: 83%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    box-shadow: 7px 7px 5px 1px #1B6DFD;
+    
 }
