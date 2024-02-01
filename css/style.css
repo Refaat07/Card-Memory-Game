@@ -1,37 +1,33 @@
 /* Fonts */
-/* Bungee Spice */
-@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap');
-
 /* Bungee */
 @import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
 
 /* Poppins */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-/* Honk */
-@import url('https://fonts.googleapis.com/css2?family=Honk&display=swap');
-
 /* Londrina Outline */
 @import url('https://fonts.googleapis.com/css2?family=Londrina+Outline&display=swap');
-
 
 
 
 /* Main Framework */
 :root {
     --main-font: 'Poppins', sans-serif;
-    --funny-font-II: 'Bungee', sans-serif;
-    --funny-font: 'Bungee Spice', sans-serif;
-    --second-funny-font : "Honk", system-ui;
-    --contianer-background : #EDEDED;
+    --funny-font: 'Bungee', sans-serif;
+    
+    --game-title-font: "Londrina Outline", sans-serif;
+    --matrix-background : whitesmoke;
     --background-color: #37373f;
     --font-default-color: #212529;
+    
+    --gradient-color-I : #1B6DFD;
+    --gradient-color-II : #9238FD;
+    --green-color: #34B433;
 
-
-    --shadow-variable-I : 5px;
-    --shadow-variable-II : 7px;
-    --shadow-variable-I- : -5px;
-    --shadow-variable-II- : -7px;
+    --shadow-variable-I : 9px;
+    --shadow-variable-I- : -9px;
+    --shadow-variable-blur-I : 2px;
+    --shadow-variable-blur-II : 3px;
 }
 
 
@@ -61,6 +57,7 @@ img {
 body {
     font-family: var(--main-font);
     background-color: var(--background-color);
+    color: var(--font-default-color);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -79,12 +76,12 @@ h1, h2, h3, h4, h5, h6 {
 .game-name {
     font-size: 52px;
     margin-bottom: 20px;
-    font-family: var(--funny-font);
-    font-family: "Londrina Outline", sans-serif;
+    /* font-family: var(--funny-font); */
+    font-family: var(--game-title-font);
     text-transform: uppercase;
     letter-spacing: 0.05em;
     font-size: 5em;
-    background: linear-gradient(to bottom, #1B6DFD 30%,#9238FD 70%);
+    background: linear-gradient(to bottom, var(--gradient-color-I) 30%, var(--gradient-color-II) 70%);
     background-clip: inherit;
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
@@ -106,8 +103,10 @@ h1, h2, h3, h4, h5, h6 {
     display: grid;
     grid-template-columns: repeat(4, 1fr); 
     gap: 5px; 
-    background-color: whitesmoke;
+    background-color: var(--matrix-background);
     border-radius: 10px;
+    /* box-shadow: 2px 2px 2px #333; */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.17); 
 }
 
 .card {
@@ -122,7 +121,7 @@ h1, h2, h3, h4, h5, h6 {
     animation: pulse 1.5s;
     opacity: 0.7; 
     /* filter: grayscale(10%); */
-    background-color: #34B433;
+    background-color: var(--green-color);
 }
 
 @keyframes pulse {
@@ -182,7 +181,7 @@ h1, h2, h3, h4, h5, h6 {
 .game-details .timer,
 .game-details .flips,
 .game-details .score {
-    font-family: var(--funny-font-II);
+    font-family: var(--funny-font);
 }
 
 .game-details .score {
@@ -200,9 +199,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .game-details #score-info {
-    color: #34B433;
+    color: var(--green-color);
 }
-
 
 
 /* Results PopUp */
@@ -218,7 +216,7 @@ h1, h2, h3, h4, h5, h6 {
     transform: translate(-50%, -50%);
     
     width: 40%;
-    background-color: #EDEDED;
+    background-color: var(--matrix-background);
     padding: 5rem;
     border-radius: 10px;
     box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
@@ -246,7 +244,7 @@ button {
     border: none;
     border-radius: 10px;
     background-color: #9138fdc7;
-    color: #EDEDED;
+    color: var(--matrix-background);
     font-size: 1.2rem;
     font-weight: 500;
     margin-top: 20px;
@@ -255,7 +253,7 @@ button {
 }
 
 button:hover {
-    background-color: #9238FD;
+    background-color: var(--gradient-color-II);
     transform: scale(1.05);
 }
 
@@ -268,44 +266,42 @@ button:hover {
     left: 83%;
     transform: translate(-50%, -50%);
     border-radius: 10px;
-    font-family: 'Poppins', sans-serif;
+    font-family: var(--main-font);
     font-weight: 700;
     font-size: 1.1rem;
-    /* box-shadow: 7px 7px 5px 1px #1B6DFD; */
+    /* box-shadow: 7px 7px 5px 1px var(--gradient-color-I); */
     animation: titleAnimation 10s infinite;
-
-    
 }
 
 @keyframes titleAnimation {
     0%, 100% {
-        box-shadow: 0px 0px 0px 1px #1B6DFD;
+        box-shadow: 0px 0px 0px 1px var(--gradient-color-I);
     }
     10% {
-        box-shadow: 8px 0px 2px 1px #1B6DFD;
-        }
+        box-shadow: var(--shadow-variable-I) 0px var(--shadow-variable-blur-I) 1px var(--gradient-color-I);
+    }
     20% {
-        box-shadow: 8px 8px 4px 1px #1B6DFD;
+        box-shadow: var(--shadow-variable-I) var(--shadow-variable-I) var(--shadow-variable-blur-II) 1px var(--gradient-color-I);
     }
     30% {
-        box-shadow: 0px 8px 2px 1px #4364ff;
+        box-shadow: 0px var(--shadow-variable-I) var(--shadow-variable-blur-I) 1px #4364ff;
     }
     40% {
-        box-shadow: -8px 8px 4px 1px #605aff;
+        box-shadow: var(--shadow-variable-I-) var(--shadow-variable-I) var(--shadow-variable-blur-II) 1px #605aff;
     }
     50% {
-        box-shadow: -8px 0px 2px 1px #7a4cff;
+        box-shadow: var(--shadow-variable-I-) 0px var(--shadow-variable-blur-I) 1px #7a4cff;
     }
     60% {
-        box-shadow: -8px -8px 4px 1px #7a4cff;
+        box-shadow: var(--shadow-variable-I-) var(--shadow-variable-I-) var(--shadow-variable-blur-II) 1px #7a4cff;
         }
     70% {
-        box-shadow: 0px -8px 2px 1px #7a4cff;
+        box-shadow: 0px var(--shadow-variable-I-) var(--shadow-variable-blur-I) 1px #7a4cff;
     }
     80% {
-        box-shadow: 8px -8px 4px 1px #9238fd;
+        box-shadow: 8px var(--shadow-variable-I-) var(--shadow-variable-blur-II) 1px var(--gradient-color-II);
     }
     90% {
-        box-shadow: 8px 0px 2px 1px #9238fd;
+        box-shadow: var(--shadow-variable-I) 0px var(--shadow-variable-blur-I) 1px var(--gradient-color-II);
     }
 }
