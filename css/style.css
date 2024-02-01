@@ -26,6 +26,12 @@
     --contianer-background : #EDEDED;
     --background-color: #37373f;
     --font-default-color: #212529;
+
+
+    --shadow-variable-I : 5px;
+    --shadow-variable-II : 7px;
+    --shadow-variable-I- : -5px;
+    --shadow-variable-II- : -7px;
 }
 
 
@@ -265,6 +271,41 @@ button:hover {
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
     font-size: 1.1rem;
-    box-shadow: 7px 7px 5px 1px #1B6DFD;
+    /* box-shadow: 7px 7px 5px 1px #1B6DFD; */
+    animation: titleAnimation 10s infinite;
+
     
+}
+
+@keyframes titleAnimation {
+    0%, 100% {
+        box-shadow: 0px 0px 0px 1px #1B6DFD;
+    }
+    10% {
+        box-shadow: 8px 0px 2px 1px #1B6DFD;
+        }
+    20% {
+        box-shadow: 8px 8px 4px 1px #1B6DFD;
+    }
+    30% {
+        box-shadow: 0px 8px 2px 1px #4364ff;
+    }
+    40% {
+        box-shadow: -8px 8px 4px 1px #605aff;
+    }
+    50% {
+        box-shadow: -8px 0px 2px 1px #7a4cff;
+    }
+    60% {
+        box-shadow: -8px -8px 4px 1px #7a4cff;
+        }
+    70% {
+        box-shadow: 0px -8px 2px 1px #7a4cff;
+    }
+    80% {
+        box-shadow: 8px -8px 4px 1px #9238fd;
+    }
+    90% {
+        box-shadow: 8px 0px 2px 1px #9238fd;
+    }
 }
