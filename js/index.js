@@ -246,8 +246,9 @@ function refreshGame() {
     // Shuffle and re-initialize the matrix
     shuffle();
     initializeMatrix();
-    addCardEventListeners();
 
+    setTimeout(addCardEventListeners,1500);
+    
     // Update displays
     timerInfo.innerText = timeLeft;
     flipInfo.innerText = trials;
