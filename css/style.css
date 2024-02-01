@@ -1,4 +1,4 @@
-/* Fonts */
+/* Importing Fonts from Google Fonts */
 /* Bungee */
 @import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
 
@@ -10,44 +10,41 @@
 
 
 
-/* Main Framework */
+/* =================================== Main Framework =================================== */
 :root {
+    /* Main fonts for game */
     --main-font: 'Poppins', sans-serif;
     --funny-font: 'Bungee', sans-serif;
-    
     --game-title-font: "Londrina Outline", sans-serif;
+
+    /* Main Colors */
     --matrix-background : whitesmoke;
     --background-color: #37373f;
     --font-default-color: #212529;
-    
-    --gradient-color-I : #1B6DFD;
-    --gradient-color-II : #9238FD;
     --green-color: #34B433;
 
+    /* Gradiant colors */
+    --gradient-color-I : #1B6DFD;
+    --gradient-color-II : #9238FD;
+
+    /* Shadow Variables */
     --shadow-variable-I : 9px;
     --shadow-variable-I- : -9px;
     --shadow-variable-blur-I : 2px;
     --shadow-variable-blur-II : 3px;
+
+    /* border radias variable */
+    --radius-variable : 10px;
 }
 
 
-/* General Normalization */
+/* =================================== General Normalization =================================== */
 *, 
 *::after, 
 *::before {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-}
-
-span, a {
-    display: inline-block;
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-    cursor: pointer;
 }
 
 img {
@@ -60,11 +57,32 @@ body {
     color: var(--font-default-color);
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-family: var(--main-font);
+.container {
+    width: 500px;
+    height: 600px;
+    margin-inline: auto;
+    background-color: #FFF;
+    border-radius: var(--radius-variable);
 }
 
-/* Start Project */
+/* =================================== Start Project Styling =================================== */
+
+/* Game Title */
+.game-name {
+    font-size: 5rem;
+    margin-bottom: 15px;
+    font-family: var(--game-title-font);
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+
+    /* settings for gradiant color */
+    background: linear-gradient(to bottom, var(--gradient-color-I) 30%, var(--gradient-color-II) 70%);
+    background-clip: inherit;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+
+/* Styling game and cards */
 .game-section {
     height: 100vh;
     display: flex;
@@ -72,29 +90,6 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center;
     flex-direction: column;
 }
-
-.game-name {
-    font-size: 52px;
-    margin-bottom: 20px;
-    /* font-family: var(--funny-font); */
-    font-family: var(--game-title-font);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    font-size: 5em;
-    background: linear-gradient(to bottom, var(--gradient-color-I) 30%, var(--gradient-color-II) 70%);
-    background-clip: inherit;
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
-}
-
-.container {
-    width: 500px;
-    height: 600px;
-    margin-inline: auto;
-    background-color: #FFF;
-    border-radius: 15px;
-}
-
 
 #matrix {
     padding: 25px;
@@ -104,26 +99,24 @@ h1, h2, h3, h4, h5, h6 {
     grid-template-columns: repeat(4, 1fr); 
     gap: 5px; 
     background-color: var(--matrix-background);
-    border-radius: 10px;
-    /* box-shadow: 2px 2px 2px #333; */
+    border-radius: var(--radius-variable);
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.17); 
 }
 
 .card {
     height: 90px;
     width: 90px; 
-    border-radius: 10px; 
+    border-radius: var(--radius-variable); 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.17); 
-    /* transition: transform 0.2s ease-in-out;  */
 }
 
 .matched {
     animation: pulse 1.5s;
     opacity: 0.7; 
-    /* filter: grayscale(10%); */
     background-color: var(--green-color);
 }
 
+/* KeyFrame for pulse effect for matched cards in correct case */
 @keyframes pulse {
     0% {
     transform: scale(0.9);
@@ -139,10 +132,7 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
-.card.shake{
-    animation: shake 0.30s ease-in-out;
-}
-
+/* KeyFrame for pulse effect for unmatched cards in wrong case */
 @keyframes shake {
     0%, 100%{
     transform: translateX(0);
@@ -161,9 +151,15 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
+.card.shake{
+    animation: shake 0.30s ease-in-out;
+}
+
+/* =================================== Start Scoring System Styling =================================== */
+
+/* Start designing results board for current game */
 .game-details {
-    padding: 5px;
-    margin-inline: auto;
+    padding: 9px;
 }
 
 .game-details div {
@@ -174,9 +170,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .game-details > span {
     text-align: center;
-    font-size: larger;
+    font-size: 1.2rem;
 }
-
 
 .game-details .timer,
 .game-details .flips,
@@ -188,26 +183,25 @@ h1, h2, h3, h4, h5, h6 {
     display: block;
 }
 
-
 .game-details #flips-info, 
 .game-details #timer-info,
 .game-details #score-info {
     font-family: var(--main-font);
-    font-weight: bolder;
-    font-size: larger;
+    font-weight: 800;
+    font-size: 1.2rem;
     margin-left: 5px;
 }
 
+/* Setting green-color for score value */
 .game-details #score-info {
     color: var(--green-color);
 }
 
-
-/* Results PopUp */
+/* =================================== Styling Modal Message =================================== */
+/* Class for hiding modal */
 .hidden {
     display: none;
 }
-
 
 .results-message {
     position: absolute;
@@ -218,7 +212,7 @@ h1, h2, h3, h4, h5, h6 {
     width: 40%;
     background-color: var(--matrix-background);
     padding: 5rem;
-    border-radius: 10px;
+    border-radius: var(--radius-variable);
     box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
     z-index: 10;
     text-align: center;
@@ -228,6 +222,7 @@ h1, h2, h3, h4, h5, h6 {
     margin-inline: auto;
 }
 
+/* Styling the overlay background for modal with low opacity */
 .game-overlay {
     position: absolute;
     width: 100%;
@@ -239,10 +234,11 @@ h1, h2, h3, h4, h5, h6 {
     z-index: 9;
 }
 
+/* Styling buttons especially in modal */
 button {
     padding: 10px 20px;
     border: none;
-    border-radius: 10px;
+    border-radius: var(--radius-variable);
     background-color: #9138fdc7;
     color: var(--matrix-background);
     font-size: 1.2rem;
@@ -257,6 +253,8 @@ button:hover {
     transform: scale(1.05);
 }
 
+
+/* =================================== Styling Scoring Board =================================== */
 .scores {
     position: absolute;
     background-color: #FFF;
@@ -265,15 +263,16 @@ button:hover {
     top: 50%;
     left: 83%;
     transform: translate(-50%, -50%);
-    border-radius: 10px;
-    font-family: var(--main-font);
+
+    border-radius: var(--radius-variable);
     font-weight: 700;
     font-size: 1.1rem;
-    /* box-shadow: 7px 7px 5px 1px var(--gradient-color-I); */
-    animation: titleAnimation 10s infinite;
+    animation: scoresBoardAnimation 10s infinite;
 }
 
-@keyframes titleAnimation {
+
+/* KeyFrame for animation of scoring board  */
+@keyframes scoresBoardAnimation {
     0%, 100% {
         box-shadow: 0px 0px 0px 1px var(--gradient-color-I);
     }

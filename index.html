@@ -3,10 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Import CSS folder to project -->
     <link rel="stylesheet" href="./css/style.css" />
     <title>Memory Card Game</title>
 </head>
 <body>
+    <!-- START GAME STRUCTURE -->
     <div class="game-section">
         <h1 class="game-name">Fruits Match</h1>
         <div class="container">
@@ -42,8 +45,9 @@
         </div>
         <div class="game-overlay hidden"></div>
     </div>
+    <!-- END GAME STRUCTURE -->
 
-    
+    <!-- START SCORING BOARD STRUCTURE -->
     <div class="scores">
         <span id="latest-score" class="latest-score">Latest Score: 
             <span id="latest-score-info"> </span> 
@@ -53,9 +57,10 @@
             <span id="highest-score-info"> </span>
         </span>
     </div>
-</div>
+    <!-- END SCORING BOARD STRUCTURE -->
+   
 
-
+    <!-- Import JS folder to project -->
     <script src="./js/index.js"></script>
 </body>
 </html>
