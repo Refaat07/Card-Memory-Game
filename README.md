@@ -15,7 +15,7 @@ Fruits Match is a classic memory card fun game where you match fruit cards. It's
 
 ![1](https://github.com/Refaat07/Card-Memory-Game/assets/94852102/b6c005f1-7e98-4347-bce4-9686fdf1310d)
 
-https://github.com/Refaat07/Card-Memory-Game/assets/94852102/88056792-a1c9-4328-99cb-b5cf58470d07
+https://github.com/Refaat07/Card-Memory-Game/assets/117265490/93e990b7-4144-4265-97e1-7473ebb3a96c
 
 
 ## Features
