@@ -30,6 +30,17 @@ https://github.com/Refaat07/Card-Memory-Game/assets/117265490/93e990b7-4144-4265
 
 ## Scoring
 * Score is calculated based on the time left and successful matches.
+* Scoring Criteria:
+The game is divided into three intervals, each interval with its own scoring system:
+  ### - First 15 seconds:
+    - Each correct match earns 100 points
+    - Each incorrect match deducts 10 points
+  ### - Second 15 seconds:
+    - Each correct match earns 50 points
+    - Each incorrect match deducts 15 points
+  ### - Third 15 seconds:
+    - Each correct match earns 25 points.
+    - Each incorrect match deducts 20 points.
 * Faster matches and more time result in higher scores.
 
 ## Results
