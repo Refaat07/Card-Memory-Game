@@ -3,6 +3,8 @@ Card Memory Game
 ----------------------------------
 Fruits Match is a classic memory card fun game where you match fruit cards. It's made with HTML, CSS, and JavaScript. Your goal is to find pairs of fruits before time runs out. Enjoy the game and test your memory skills!
 
+## Live Demo: https://refaat07.github.io/Card-Memory-Game/
+
 ## Table of Contents
 - [Demo](#demo)
 - [Features](#features)
